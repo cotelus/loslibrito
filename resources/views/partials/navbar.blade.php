@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand" href="http://loslibrito.test">
         <img src="http://loslibrito.test/imgs/loslibrito.png" width="60" height="60" alt="">
         Losli Brito
     </a>
