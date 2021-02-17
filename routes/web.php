@@ -1,5 +1,9 @@
 <?php
 
+// Ruta de los controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BibliotecaController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'getHome']);
 
 Route::get('/login', function () {
     return view('auth/login');
@@ -29,23 +31,15 @@ Route::get('/logout', function () {
 //  La ruta biblioteca va a ser donde se muestren todos los libros disponibles
 Route::group(['prefix' => 'biblioteca'/*, 'middleware' => 'auth'*/], function () {
     // Raiz de la seccion biblioteca
-    Route::get('/', function(){
-        return view('biblioteca.index');
-    });
+    Route::get('/', [BibliotecaController::class, 'getIndex']);
 
     // Vista en detalle de un libro concreto. Para alquilar (socio) o editar/eliminar (bibliotecario)
-    Route::get('/detalle/{id}', function(){
-        return view('biblioteca.detalle', array('id'=>$id));
-    });
+    Route::get('/detalle/{id}', [BibliotecaController::class, 'getDetalleLibro']);
 
     // Añade un nuevo libro. Solo accesible al usuario bibliotecario. Redirige a detalle si es socio
-    Route::get('/nuevoLibro', function(){
-        return view('biblioteca.nuevoLibro');
-    });
+    Route::get('/nuevoLibro', [BibliotecaController::class, 'getNuevoLibro']);
 
     // Para editar un libro ya creado. Redirige a detalle si es socio
-    Route::get('/editarLibro{id}', function(){
-        return view('biblioteca.editarLibro', array('id'=>$id));
-    });
+    Route::get('/editarLibro/{id}', [BibliotecaController::class, 'getEditarLibro']);
 });
 
