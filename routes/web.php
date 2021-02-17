@@ -43,3 +43,6 @@ Route::group(['prefix' => 'biblioteca'/*, 'middleware' => 'auth'*/], function ()
     Route::get('/editarLibro/{id}', [BibliotecaController::class, 'getEditarLibro']);
 });
 
+// COMPROBAR FORMULARIO
+Route::post('checkNuevoLibro', [BibliotecaController::class, 'checkNuevoLibro']);
+

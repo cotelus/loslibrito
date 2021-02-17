@@ -8,19 +8,24 @@
             <div class="card-header text-center">
                 Añadir libro
             </div>
+            {{-- Errores forumlario --}}
+            @if ($errors->any())
+                <h3 style="color: LightCoral">Error con algún campo del formulario</h3>
+            @endif
+
             <div class="card-body" style="padding:30px">
-                <form action="" method="POST">
+                <form method="POST" action="http://loslibrito.test/checkNuevoLibro">
                     {{-- Token de proteccion csrf --}}
                     @csrf
 
                     <div class="form-group">
-                        <label for="title">Título</label>
-                        <input type="text" name="title" id="title" class="form-control">
+                        <label for="titulo">Título</label>
+                        <input type="text" name="titulo" id="titulo" class="form-control" value="{{old('titulo')}}">
                     </div>
         
                     <div class="form-group">
-                        <label for="year">Año</label>
-                        <input type="number" name="year" id="year" class="form-control">
+                        <label for="anio">Año</label>
+                        <input type="number" name="anio" id="anio" class="form-control">
                     </div>
         
                     <div class="form-group">
