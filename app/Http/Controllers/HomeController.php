@@ -6,9 +6,23 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    // Muestra la ruta Home sin mas
-    public function getHome(){
-        return view('home');
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getHome()
+    {
+        return view('home');
+    }
 }

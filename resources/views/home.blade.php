@@ -1,32 +1,23 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="row container text-center">
-        <div class="col-12">
-            <h1 class="text-center">Los libros, vaya fantasía</h1>
-        </div>
-        <div class="col-8 offset-2">
-            <p class="text-justify">Tenemos una cantidad de libros increíble. Es que hay de todo de 
-                verdad. Tenemos cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles, 
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles,
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles,
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles,
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles,
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles,
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles,
-                cuentos, novelas, diccionarios, cómics, científicos, de viaje, biografías,
-                de texto, de gramática, de referencia, monografías, recreativos, poéticos, juveniles...
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Hola, {{auth()->user()->name}}</div>
 
-            </p>
-            <h3>¡Y MUCHOS MAS!</h3>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('Has iniciado sesión') }}
+                </div>
+            </div>
         </div>
     </div>
-
-@stop
+</div>
+@endsection

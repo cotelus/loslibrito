@@ -17,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'getHome']);
+//Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/login', function () {
     return view('auth/login');
@@ -29,7 +32,8 @@ Route::get('/logout', function () {
 
 // Grupo de rutas con prefijo común - BIBLIOTECA
 //  La ruta biblioteca va a ser donde se muestren todos los libros disponibles
-Route::group(['prefix' => 'biblioteca'/*, 'middleware' => 'auth'*/], function () {
+//  Con la opcion 'middleware'=>'auth' se obliga a que el usuario esté autenticado
+Route::group(['prefix' => 'biblioteca', 'middleware' => 'auth'], function () {
     // Raiz de la seccion biblioteca
     Route::get('/', [BibliotecaController::class, 'getIndex']);
 
@@ -48,3 +52,7 @@ Route::post('checkNuevoLibro', [BibliotecaController::class, 'checkNuevoLibro'])
 
 // RUTA ADMINER
 Route::any('adminer', '\Aranyasen\LaravelAdminer\AdminerController@index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');

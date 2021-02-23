@@ -26,12 +26,29 @@
 
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item">
-                        <form action="{{ url('/logout') }}" method="POST" style="display:inline">
-                            {{ csrf_field() }}
+                        {{-- Si el usuario está autenticado pondrá su nombre y la opción de cerrar sesión
+                             Si el usuario no está autenticado, pondrá un botón de login/registro 
+                         --}}
+                        @if (Auth::check())
+                            <form action="{{ url('/home') }}" method="GET" style="display:inline">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-link nav-link" style="display:inline;cursor:pointer">
+                                    {{auth()->user()->name}}
+                                </button>
+                            </form>
+                            <form action="{{ url('/logout') }}" method="POST" style="display:inline">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-link nav-link" style="display:inline;cursor:pointer">
+                                    Cerrar sesión
+                                </button>
+                            </form>
+                        @else 
+                        <form action="{{ url('/login') }}" method="GET" style="display:inline">
                             <button type="submit" class="btn btn-link nav-link" style="display:inline;cursor:pointer">
-                                Cerrar sesión
+                                Iniciar sesión
                             </button>
                         </form>
+                        @endif
                     </li>
                 </ul>
             </div>
