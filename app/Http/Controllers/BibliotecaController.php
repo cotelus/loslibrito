@@ -55,9 +55,6 @@ class BibliotecaController extends Controller
 
 	// Devuelve la vista para añadir un nuevo libro al sistema con un formulario
     public function checkNuevoLibro(Request $request){
-        //return view('biblioteca.nuevoLibro');
-		//return $request;
-		//return $request->get("escritor");
 		request()->validate([
 			'escritor' => 'required'
 		]);

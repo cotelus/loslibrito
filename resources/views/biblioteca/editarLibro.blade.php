@@ -10,8 +10,9 @@
             </div>
             <div class="card-body" style="padding:30px">
                 <form action="" method="POST">
+                    {{-- Token de proteccion csrf y campo oculto necesario para
+                        poder enviar datos al controlador y modificar la base de datos --}}
                     <input type="hidden" name="_method" value="PUT">
-                    {{-- Token de proteccion csrf --}}
                     @csrf
 
                     <div class="form-group">
