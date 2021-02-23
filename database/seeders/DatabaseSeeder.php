@@ -45,8 +45,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        self::seedBiblioteca();
-        $this->command->info('Tabla biblioteca inicializada con datos');
+        //self::seedBiblioteca();
+        //$this->command->info('Tabla biblioteca inicializada con datos');
+
+        self::seedUsuarios();
+        $this->command->info('Tabla usuarios inicializada con exito');
     }
 
     // Este metodo es solo para iniciaizar la tbala biblioteca con algunos libros
@@ -64,5 +67,25 @@ class DatabaseSeeder extends Seeder
             $p->descripcion = $libro['descripcion'];
             $p->save();
         }
+    }
+
+    // Este metodo es solo para iniciaizar la tabla usuarios con algunos usuarios
+    public function seedUsuarios(){
+        // Se borra el cntenido actual antes de meter nuevo
+        DB::table('users')->delete();
+
+        // Usuario 1
+		$user = new User;
+		$user->name = "Fulanito";
+		$user->email = "fulanito19@loslibrito.test";
+		$user->password = bcrypt("123456");
+		$user->save();
+
+        // Usuario 2
+		$user2 = new User;
+		$user2->name = "Menganito";
+		$user2->email = "vivamengano@loslibrito.test";
+		$user2->password = bcrypt("123456");
+		$user2->save();
     }
 }

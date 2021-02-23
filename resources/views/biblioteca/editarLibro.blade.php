@@ -17,28 +17,28 @@
 
                     <div class="form-group">
                         <label for="title">Título</label>
-                        <input type="text" name="title" id="title" class="form-control" value="{{$libro['titulo']}}">
+                        <input type="text" name="title" id="title" class="form-control" value="{{$libro->titulo}}">
                     </div>
         
                     <div class="form-group">
                         <label for="year">Año</label>
-                        <input type="number" name="year" id="year" class="form-control"  value="{{$libro['anio']}}">
+                        <input type="number" name="year" id="year" class="form-control"  value="{{$libro->anio}}">
                     </div>
         
                     <div class="form-group">
-                        <label for="escritor">Escritor</label>
-                        <input type="text" name="escritor" id="escritor" class="form-control"  value="{{$libro['escritor']}}">
+                        <label for="escritor">Autor</label>
+                        <input type="text" name="escritor" id="escritor" class="form-control"  value="{{$libro->escritor}}">
                     </div>
         
                     <div class="form-group">
                         {{-- Voy a usar enlaces, por lo que la imgagen va a ser de tipo url --}}
                         <label for="Portada">Portada</label>
-                        <input type="url" name="portada" id="portada" class="form-control"  value="{{$libro['portada']}}">
+                        <input type="url" name="portada" id="portada" class="form-control"  value="{{$libro->portada}}">
                     </div>
         
                     <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <textarea name="descripcion" id="descripcion" class="form-control" rows="5">{{$libro['descripcion']}}</textarea>
+                        <textarea name="descripcion" id="descripcion" class="form-control" rows="5">{{$libro->descripcion}}</textarea>
                     </div>
         
                     <div class="form-group text-center">
