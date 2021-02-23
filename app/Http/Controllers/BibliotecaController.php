@@ -102,4 +102,16 @@ class BibliotecaController extends Controller
             return redirect('falloInsert');
         }
     }
+
+    // Elimina un libro de la base de datos
+    public function eliminarLibro($id){
+        try{
+            Libro::where('id', $id)->delete();
+            return redirect('/biblioteca');
+        }
+        catch(Exception $e){
+            // Si hubo algun error, se devuelve a una pagina de error
+            return redirect('falloInsert');
+        }
+    }
 }

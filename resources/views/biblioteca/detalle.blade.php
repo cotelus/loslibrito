@@ -29,6 +29,7 @@
                     <button clas="col-3" type="button" class="btn btn-primary">Alquilar libro</button>
                 @endif
                 <button clas="col-3" type="button" onclick="window.location.href='{{url("/biblioteca/editarLibro/$libro->id")}}';" class="btn ml-1 btn-warning text-light">Editar libro</button>
+                <button clas="col-3" type="button" onclick="window.location.href='{{url("/biblioteca/eliminarLibro/$libro->id")}}';" class="btn ml-1 btn-danger text-light">Eliminar libro</button>
                 <button clas="col-3" type="button" onclick="window.location.href='{{url("/biblioteca/")}}';" class="btn ml-1 btn-outline-dark">Volver al listado</button>
             </div>
 

@@ -50,6 +50,9 @@ Route::group(['prefix' => 'biblioteca', 'middleware' => 'auth'], function () {
     // Para añadir un libro nuevo
     Route::put('/editarLibro/{id}', [BibliotecaController::class, 'putEditarLibro']);
 
+    // Elimina un libro del listado
+    Route::get('/eliminarLibro/{id}', [BibliotecaController::class, 'eliminarLibro']);
+
 });
 
 // COMPROBAR FORMULARIO
