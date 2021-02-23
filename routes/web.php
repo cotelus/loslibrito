@@ -46,3 +46,5 @@ Route::group(['prefix' => 'biblioteca'/*, 'middleware' => 'auth'*/], function ()
 // COMPROBAR FORMULARIO
 Route::post('checkNuevoLibro', [BibliotecaController::class, 'checkNuevoLibro']);
 
+// RUTA ADMINER
+Route::any('adminer', '\Aranyasen\LaravelAdminer\AdminerController@index');
