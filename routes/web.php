@@ -40,11 +40,16 @@ Route::group(['prefix' => 'biblioteca', 'middleware' => 'auth'], function () {
     // Vista en detalle de un libro concreto. Para alquilar (socio) o editar/eliminar (bibliotecario)
     Route::get('/detalle/{id}', [BibliotecaController::class, 'getDetalleLibro']);
 
-    // Añade un nuevo libro. Solo accesible al usuario bibliotecario. Redirige a detalle si es socio
+    // Vista para añadir un nuevo libro.
     Route::get('/nuevoLibro', [BibliotecaController::class, 'getNuevoLibro']);
+    // Para añadir un libro nuevo
+    Route::post('/nuevoLibro', [BibliotecaController::class, 'postNuevoLibro']);
 
     // Para editar un libro ya creado. Redirige a detalle si es socio
     Route::get('/editarLibro/{id}', [BibliotecaController::class, 'getEditarLibro']);
+    // Para añadir un libro nuevo
+    Route::put('/editarLibro/{id}', [BibliotecaController::class, 'putEditarLibro']);
+
 });
 
 // COMPROBAR FORMULARIO
@@ -56,3 +61,7 @@ Route::any('adminer', '\Aranyasen\LaravelAdminer\AdminerController@index');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'getHome'])->name('home');
+
+Route::get('/falloInsert', function () {
+    return view('fallo');
+});

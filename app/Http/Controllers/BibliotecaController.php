@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use DB;
 
 use Illuminate\Http\Request;
 use App\Models\Libro;
@@ -35,12 +36,70 @@ class BibliotecaController extends Controller
         return view('biblioteca.detalle', array('id'=>$id, 'libro'=>$libros));
     }
 
-	// Devuelve la vista para añadir un nuevo libro al sistema con un formulario
-    public function checkNuevoLibro(Request $request){
-		request()->validate([
-			'escritor' => 'required'
+    // Comprueba que los parametros introducidos par anuevo libro son válidos
+    public function postNuevoLibro(Request $request){
+        // Validacion del formulario
+        request()->validate([
+            'titulo' => 'required|max:255',
+            'anio' => 'required',
+			'escritor' => 'required',
+            'portada' => 'required',
+            'descripcion' => 'required'
 		]);
 
-		return "Datos bien";
+        // Insercion en la BBDD
+        $contenido = $request->input();
+        try{
+            // Se crea un objeto libro y se le introducen los datos del formulario
+            $libro = new Libro;
+            $libro->titulo = $contenido['titulo'];
+            $libro->anio = $contenido['anio'];
+            $libro->escritor = $contenido['escritor'];
+            $libro->portada = $contenido['portada'];
+            $libro->disponible = true;
+            $libro->descripcion = $contenido['descripcion'];
+            // Se almacena la informacion en la BBDD
+            $libro->save();
+
+            return redirect('/biblioteca');
+        }
+        catch(Exception $e){
+            // Si hubo algun error, se devuelve a una pagina de error
+            return redirect('falloInsert');
+        }
+    }
+
+    // Comprueba que los parametros introducidos para modificar libro son validos
+    public function putEditarLibro(Request $request){
+        // Validacion del formulario
+        request()->validate([
+            'titulo' => 'required|max:255',
+            'anio' => 'required',
+			'escritor' => 'required',
+            'portada' => 'required',
+            'descripcion' => 'required'
+		]);
+
+        // Insercion en la BBDD
+        $contenido = $request->input();
+        $id = $contenido['id'];
+        try{
+            // Se busca el libro y se modifican los datos
+            $libro = Libro::find($id);
+            $libro->titulo = $contenido['titulo'];
+            $libro->anio = $contenido['anio'];
+            $libro->escritor = $contenido['escritor'];
+            $libro->portada = $contenido['portada'];
+            $libro->disponible = true;
+            $libro->descripcion = $contenido['descripcion'];
+            // Se almacena la informacion en la BBDD
+            $libro->save();
+
+            return redirect('/biblioteca');
+        }
+        catch(Exception $e){
+            // Si hubo algun error, se devuelve a una pagina de error
+            return redirect('falloInsert');
+        }
     }
 }

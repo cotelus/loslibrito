@@ -15,14 +15,16 @@
                     <input type="hidden" name="_method" value="PUT">
                     @csrf
 
+                    {{-- Campo oculto para devolver el ID actual --}}
+                    <input type="hidden" name="id" value="{{$libro->id}}">
                     <div class="form-group">
                         <label for="title">Título</label>
-                        <input type="text" name="title" id="title" class="form-control" value="{{$libro->titulo}}">
+                        <input type="text" name="titulo" id="titulo" class="form-control" value="{{$libro->titulo}}">
                     </div>
         
                     <div class="form-group">
                         <label for="year">Año</label>
-                        <input type="number" name="year" id="year" class="form-control"  value="{{$libro->anio}}">
+                        <input type="number" name="anio" id="anio" class="form-control"  value="{{$libro->anio}}">
                     </div>
         
                     <div class="form-group">

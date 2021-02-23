@@ -17,7 +17,7 @@
             @endif
 
             <div class="card-body" style="padding:30px">
-                <form method="POST" action="http://loslibrito.test/checkNuevoLibro">
+                <form method="POST" action="">
                     {{-- Token de proteccion csrf --}}
                     @csrf
 
